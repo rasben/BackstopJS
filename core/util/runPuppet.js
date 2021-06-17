@@ -117,6 +117,8 @@ async function processScenarioView (scenario, variantOrScenarioLabelSafe, scenar
       url = scenario.referenceUrl;
     }
 
+    console.log('waitUntil: domcontentloaded && waitUntil: networkidle0');
+
     await Promise.all([
       page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
       page.waitForNavigation({ waitUntil: 'networkidle0' }),
