@@ -116,7 +116,12 @@ async function processScenarioView (scenario, variantOrScenarioLabelSafe, scenar
     if (isReference && scenario.referenceUrl) {
       url = scenario.referenceUrl;
     }
-    await page.goto(translateUrl(url), {"waitUntil" : "networkidle0"});
+
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+      page.waitForNavigation({ waitUntil: 'networkidle0' }),
+      page.goto(translateUrl(url))
+    ]);
 
     await injectBackstopTools(page);
 
