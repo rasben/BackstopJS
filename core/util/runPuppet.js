@@ -117,11 +117,11 @@ async function processScenarioView (scenario, variantOrScenarioLabelSafe, scenar
       url = scenario.referenceUrl;
     }
 
-    console.log('waitUntil: domcontentloaded && waitUntil: networkidle0');
+    console.log('waitUntil: domcontentloaded && waitUntil: networkidle2');
 
     await Promise.all([
       page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
-      page.waitForNavigation({ waitUntil: 'networkidle0' }),
+      page.waitForNavigation({ waitUntil: 'networkidle2' }),
       page.goto(translateUrl(url))
     ]);
 
