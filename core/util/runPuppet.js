@@ -119,10 +119,11 @@ async function processScenarioView (scenario, variantOrScenarioLabelSafe, scenar
 
     console.log('waitUntil: domcontentloaded && waitUntil: networkidle0');
 
+    page.goto(translateUrl(url));
+
     await Promise.all([
       page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
       page.waitForNavigation({ waitUntil: 'networkidle0' }),
-      page.goto(translateUrl(url))
     ]);
 
     await injectBackstopTools(page);
